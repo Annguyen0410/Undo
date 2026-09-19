@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Undo has no light mode: the whole product is a dark, late-night surface.
+      The platform theme therefore has to be dark too, otherwise the window
+      background flashes white on launch and the system draws *dark* status bar
+      icons over our near-black UI (which made the clock invisible).
+
+      Edge-to-edge behaviour is configured in MainActivity via
+      enableEdgeToEdge(SystemBarStyle.dark(...)).
+    -->
+    <style name="Theme.RegretNote" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/undo_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

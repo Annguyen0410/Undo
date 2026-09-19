@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   The pre-Android-12 half of the backup policy. See data_extraction_rules.xml for
+   the full reasoning; this file exists because `android:fullBackupContent` is what
+   API 30 and below actually read, and until now it was the untouched Android Studio
+   template — comments only, no rules — which meant "back up the entire app data
+   directory", notes included, by default.
+
+   This format cannot distinguish a cloud backup from a direct device transfer, so
+   on these versions the notes are excluded from both. When the two cannot be told
+   apart, the safe reading is "not uploaded"; those devices fall back to the free CSV
+   export, which is the copy the user holds anyway.
+-->
+<full-backup-content>
+    <exclude domain="database" path="undo.db" />
+    <exclude domain="database" path="undo.db-wal" />
+    <exclude domain="database" path="undo.db-shm" />
+    <exclude domain="database" path="undo.db-journal" />
+    <exclude domain="sharedpref" path="undo_draft.xml" />
+</full-backup-content>

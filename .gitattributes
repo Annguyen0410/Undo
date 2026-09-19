@@ -1,0 +1,18 @@
+# Keep the Gradle wrapper runnable on every platform.
+# Without this, a clone on macOS/Linux can check out gradlew with CRLF and fail
+# with "/bin/sh^M: bad interpreter" before any of the app's code is reached.
+gradlew text eol=lf
+*.sh    text eol=lf
+
+# The Windows launcher wants CRLF.
+*.bat   text eol=crlf
+
+# Browser-reviewed documents: diffable, but never worth normalising aggressively.
+*.html  text eol=lf
+*.py    text eol=lf
+
+# Binary assets — never let git touch the bytes.
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.jar   binary

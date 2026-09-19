@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   What leaves this device, and what does not.
+
+   A journal of things you wish you had done differently is not like other app
+   data: every row is a private admission in the user's own words. Android's cloud
+   backup uploads an app's whole data directory to Google by default, which would
+   quietly contradict this app's "local-first, no backend" promise — and the user
+   never chose it, a default did. These rules replace that default with a decision.
+
+   Policy:
+
+     excluded from cloud backup
+       undo.db (+ its WAL sidecars)  the notes themselves
+       undo_draft.xml                the half-written note currently in the composer
+
+     still backed up
+       undo_settings.xml             reminder time and theme; not sensitive
+       com_revenuecat_*.xml          the anonymous app user ID and transaction
+                                     metadata. Not personal content, and keeping it
+                                     is what lets a paid entitlement survive a
+                                     restore instead of stranding the purchase.
+
+   Device transfer is left wide open on purpose: a direct phone-to-phone move is
+   not a copy on anyone's server, so the journal travels with the user to their
+   next phone. That is the balance — nothing is uploaded, and nothing is stranded.
+
+   The consequence is real and is stated rather than hidden: lose the phone without
+   having exported, and the notes are gone. Which is exactly why export and import
+   are free features rather than Premium ones (see the Data section of Settings) —
+   the portable file is the backup, and it is one the user holds.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="database" path="undo.db" />
+        <exclude domain="database" path="undo.db-wal" />
+        <exclude domain="database" path="undo.db-shm" />
+        <!-- Not used in WAL mode, but named so switching journal mode later cannot
+             silently start uploading the journal. -->
+        <exclude domain="database" path="undo.db-journal" />
+        <exclude domain="sharedpref" path="undo_draft.xml" />
+    </cloud-backup>
+    <!-- Intentionally empty: no excludes means a device transfer carries everything. -->
+    <device-transfer>
+        <!-- Nothing excluded. -->
+    </device-transfer>
+</data-extraction-rules>

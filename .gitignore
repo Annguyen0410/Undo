@@ -1,0 +1,43 @@
+*.iml
+.gradle
+.kotlin/
+/local.properties
+local.properties
+
+# IDE and local tooling state: none of it belongs in a public repository.
+# This replaces the per-file list the Android template ships with — that list
+# missed misc.xml, gradle.xml and compiler.xml, which carry absolute machine
+# paths (C:/Users/...), and .freebuff/ which holds this project's local id.
+/.idea/
+/.freebuff/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# Gradle/Kotlin build output — every module, not just the root project.
+# Without this, app/build (including kspCaches with absolute machine paths)
+# would be committed to the public repository.
+build/
+
+# Signing material and finished artifacts: never publish these.
+*.jks
+*.keystore
+*.apk
+*.aab
+/app/release
+
+# Crash dumps and tool output.
+*.hprof
+lint-results*.html
+
+# Generated review artifacts: the icon preview page (docs/shipaton/icon_preview.py)
+# and the emulator screenshot review page (docs/shipaton/make_review.py).
+docs/shipaton/icon-preview.html
+docs/shipaton/ui-review.html
+docs/shipaton/shots/
+
+# Python bytecode from those scripts.
+__pycache__/
+*.pyc

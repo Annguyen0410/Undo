@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Only the values the platform theme needs. Everything else lives in
+      ui/theme/Color.kt so the Compose palette stays the single source of truth.
+      Keeping windowBackground in sync with UndoBackground stops the white flash
+      between launch and the first frame.
+    -->
+    <color name="undo_background">#FF0B0912</color>
+    <color name="undo_background_midnight">#FF08080E</color>
+</resources>
